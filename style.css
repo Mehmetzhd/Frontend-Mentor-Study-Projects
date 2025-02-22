@@ -49,15 +49,38 @@ body {
   width: 375px;
   height: 675px;
   border-radius: 20px;
+  overflow: hidden;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 768px) {
   .mainbox {
-    flex-direction: column;
-    align-content: center;
-    min-height: 500px; /* Further reduce height for mobile */
-    min-width: 50%;
-    font-size: 0.9em; /* Further adjust font size if needed */
+    flex-direction: row;
+    width: 600px;
+    max-height: 450px;
+    font-size: 0.9em;
+    border-radius: 20px;
+    align-items: center;
+  }
+  .image {
+    width: 50%;
+  }
+
+  .mainbox .image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px 0 0 20px;
+  }
+  .text {
+    width: 50%;
+    text-align: left;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px 30px 0px;
   }
 }
 .image img {
@@ -130,4 +153,5 @@ body {
   border-radius: 10px;
   background-color: var(--color-primary-green-500);
   font-weight: var(--product-name-bold);
+  border: none;
 }

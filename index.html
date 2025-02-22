@@ -23,7 +23,13 @@
       <div class="container">
         <div class="mainbox">
           <section class="image">
-            <img src="image-product-mobile.jpg" alt="mobile" />
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcset="image-product-desktop.jpg"
+              />
+              <img src="image-product-mobile.jpg" alt="mobile" />
+            </picture>
           </section>
           <section class="text">
             <p id="product">PERFUME</p>
@@ -34,7 +40,9 @@
             </p>
             <section class="pricing">
               <p id="price">$149.99</p>
-              <p id="priceDiscount">$169.99</p>
+              <p style="text-decoration-line: line-through" id="priceDiscount">
+                $169.99
+              </p>
             </section>
             <section class="button">
               <button id="addToCart">Add to Cart</button>
