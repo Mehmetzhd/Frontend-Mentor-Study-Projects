@@ -1,157 +1,163 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
+/* Custom properties - organized for better maintainability */
 :root {
+  /* Font families */
   --product-font-family-1: "Montserrat", sans-serif;
-  --product-font-family-2: "Fraunces", sans-serif; /* Example font */
+  --product-font-family-2: "Fraunces", serif; /* Changed to serif to ensure proper font display */
 
+  /* Font sizes - kept consistent throughout */
   --product-category-font-size: 14px;
-  --product-name-font-size: 34px;
+  --product-name-font-size: 32px; /* Reduced from 34px for better proportions */
   --product-info-font-size: 16px;
 
+  /* Font weights */
   --product-name-regular: 500;
   --product-name-bold: 700;
 
+  /* Colors - organized by type */
   --color-neutral-black: hsl(212, 21%, 14%);
   --color-neutral-grey: hsl(228, 12%, 48%);
   --color-neutral-cream: hsl(30, 38%, 92%);
   --color-neutral-white: hsl(0, 0%, 100%);
-
   --color-primary-green-500: hsl(158, 36%, 37%);
-  --color-primary-green-700: hsl(158, 42%, 18%);
-
-  --text-opacity-50: 50%;
-  --text-opacity-70: 70%;
+  --color-primary-green-700: hsl(
+    158,
+    42%,
+    18%
+  ); /* Added darker shade for hover states */
 }
 
-body {
-  background-color: antiquewhite;
+/* Reset - more comprehensive than before */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-  display: flex;
-  min-height: 100vh;
+/* Body styling - improved centering technique */
+body {
+  background-color: var(--color-neutral-cream);
+  min-height: 100vh; /* Changed from height to min-height for better responsiveness */
+  display: flex; /* Changed from multiple nested flexbox */
   align-items: center;
   justify-content: center;
+  padding: 1rem; /* Added padding to prevent touching edges on small screens */
 }
 
+/* Main card container - simplified structure */
 .mainbox {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  width: 375px;
-  height: 675px;
-  border-radius: 20px;
-  overflow: hidden;
+  background-color: var(--color-neutral-white);
+  width: 100%; /* Makes it responsive */
+  max-width: 375px; /* Prevents too wide cards on mobile */
+  border-radius: 10px; /* Reduced from 20px for better visual */
+  overflow: hidden; /* Ensures image doesn't break radius */
 }
 
-@media (min-width: 768px) {
-  .mainbox {
-    flex-direction: row;
-    width: 600px;
-    max-height: 450px;
-    font-size: 0.9em;
-    border-radius: 20px;
-    align-items: center;
-  }
-  .image {
-    width: 50%;
-  }
-
-  .mainbox .image img {
-    height: 100%;
-    width: 100%;
-    border-radius: 20px 0 0 20px;
-  }
-  .text {
-    width: 50%;
-    text-align: left;
-    padding: 20px 20px 20px 20px;
-    box-sizing: border-box;
-  }
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 0px 30px 0px;
-  }
+/* Image container - fixed aspect ratio issues */
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Forces square ratio on mobile */
 }
+
+/* Image styling - prevents distortion */
 .image img {
-  max-width: 100%;
-  border-radius: 20px 20px 0px 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills space without distortion */
 }
 
+/* Text content container - consistent padding */
 .text {
-  text-align: left;
+  padding: 24px; /* Changed from mixed padding to consistent value */
 }
 
-.text #product {
-  text-align: left;
+/* Product category text */
+#product {
   font-family: var(--product-font-family-1);
-  padding: 20px 0px 0px 20px;
+  font-size: var(--product-category-font-size);
+  letter-spacing: 5px; /* Added for better spacing in category text */
+  color: var(--color-neutral-grey);
+  margin-bottom: 12px; /* Added consistent spacing */
 }
 
-.text #productName {
-  text-align: left;
+/* Product name styling */
+#productName {
   font-family: var(--product-font-family-2);
   font-size: var(--product-name-font-size);
   font-weight: var(--product-name-bold);
-  padding: 15px;
+  line-height: 1; /* Added to control text height */
+  margin-bottom: 16px; /* Consistent spacing */
+  color: var(--color-neutral-black);
 }
 
-.text #productInfo {
-  text-align: left;
+/* Product description styling */
+#productInfo {
   font-family: var(--product-font-family-1);
-  padding: 10px 25px 25px 25px;
   font-size: var(--product-info-font-size);
-
-  font-weight: var(--product-name-regular);
+  line-height: 1.6; /* Added for better readability */
   color: var(--color-neutral-grey);
+  margin-bottom: 24px; /* Increased spacing before price */
 }
 
+/* Price container - improved alignment */
 .pricing {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  padding-left: 15px;
+  gap: 16px; /* Used gap instead of padding for better spacing */
+  margin-bottom: 20px;
 }
 
-.text #price {
-  text-align: left;
+/* Current price styling */
+#price {
   font-family: var(--product-font-family-2);
-  padding-left: 10px;
   font-size: var(--product-name-font-size);
-  font-weight: var(--product-name-bold);
   color: var(--color-primary-green-500);
 }
 
-.text #priceDiscount {
-  text-align: left;
+/* Original price styling */
+#priceDiscount {
   font-family: var(--product-font-family-1);
-  padding: 15px;
-
-  color: var(--color-primary-green-500);
+  color: var(--color-neutral-grey);
+  text-decoration: line-through;
 }
+
+/* Button container */
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 20px;
+  margin-top: 20px; /* Added space after pricing */
 }
-.button #addToCart {
-  color: var(--color-neutral-white);
-  font-family: var(--product-font-family-1);
-  width: 85%;
-  height: 50px;
-  border-radius: 10px;
+
+/* Add to cart button styling */
+#addToCart {
+  width: 100%; /* Makes button full width */
+  padding: 15px; /* Consistent padding */
   background-color: var(--color-primary-green-500);
-  font-weight: var(--product-name-bold);
+  color: var(--color-neutral-white);
   border: none;
+  border-radius: 8px; /* Reduced from 10px for better look */
+  font-family: var(--product-font-family-1);
+  font-weight: var(--product-name-bold);
+  cursor: pointer; /* Added to show clickable */
+  transition: background-color 0.2s; /* Smooth hover effect */
+}
+
+/* Button hover effect */
+#addToCart:hover {
+  background-color: var(--color-primary-green-700); /* Darker shade on hover */
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .mainbox {
+    display: grid; /* Changed from flex to grid */
+    grid-template-columns: 1fr 1fr; /* Equal width columns */
+    max-width: 600px; /* Larger on desktop */
+  }
+
+  .image {
+    aspect-ratio: auto; /* Removes forced square ratio */
+    height: 100%; /* Makes image full height */
+  }
+
+  .text {
+    padding: 32px; /* Increased padding for desktop */
+  }
 }
